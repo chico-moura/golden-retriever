@@ -1,0 +1,2 @@
+from domain.dtos.interaction_dto import InteractionDTO
+from domain.dtos.retrieve_last_interactions_service_input_dto import RetrieveLastInteractionsServiceInputDTO
