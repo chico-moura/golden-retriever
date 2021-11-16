@@ -1,2 +1,3 @@
 from domain.value_objects.interaction_description import InteractionDescription
 from domain.value_objects.interaction_time_stamp import InteractionTimeStamp
+from domain.value_objects.user_id import UserID
