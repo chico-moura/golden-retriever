@@ -1,0 +1,1 @@
+from domain.factories.interaction_factory import InteractionFactory
