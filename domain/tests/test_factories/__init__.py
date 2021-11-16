@@ -1,0 +1,3 @@
+from domain.tests.test_factories.interaction_description_test_factory import InteractionDescriptionTestFactory
+from domain.tests.test_factories.interaction_time_stamp_test_factory import InteractionTimeStampTestFactory
+from domain.tests.test_factories.interaction_test_factory import InteractionTestFactory
