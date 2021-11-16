@@ -7,4 +7,4 @@ class InteractionTimeStampTestFactory(Factory):
     class Meta:
         model = InteractionTimeStamp
 
-    value = Faker('datetime_object')
+    value = Faker('date_time')
