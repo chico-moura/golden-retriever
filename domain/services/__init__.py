@@ -1,0 +1,1 @@
+from domain.services.retrieve_last_interactions_service import RetrieveLastInteractionsService
