@@ -6,5 +6,5 @@ from domain.value_objects.user_id import UserID
 
 
 class InteractionRepository(ABC):
-    def get_last_interactions(self, user_id: UserID, amount: int) -> List[Interaction]:
+    def fetch_last_interactions(self, user_id: UserID, amount: int) -> List[Interaction]:
         pass
