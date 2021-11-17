@@ -7,29 +7,33 @@ from domain.dtos import RetrieveLastInteractionsServiceInputDTO, InteractionDTO
 from domain.repositories import InteractionRepository
 from domain.services.retrieve_last_interactions_service import RetrieveLastInteractionsService
 from domain.tests.test_factories import InteractionTestFactory, RetrieveLastInteractionsServiceInputDTOTestFactory
-from domain.value_objects import UserID
+from domain.tests.test_factories.user_account_test_factory import UserAccountTestFactory
+from domain.value_objects import UserAccount
 
 
 class TestRetrieveLastInteractionService(TestCase):
     def setUp(self) -> None:
         self.interaction_repository = mock(InteractionRepository)
         self.retrieve_last_interactions_service = RetrieveLastInteractionsService(self.interaction_repository)
-        self.input_dto: RetrieveLastInteractionsServiceInputDTO = RetrieveLastInteractionsServiceInputDTOTestFactory.build()
+        self.user_account: UserAccount = UserAccountTestFactory.build()
+        self.input_dto: RetrieveLastInteractionsServiceInputDTO = RetrieveLastInteractionsServiceInputDTOTestFactory.build(
+            user_id=self.user_account.id,
+            user_token=self.user_account.token
+        )
 
     def tearDown(self) -> None:
         unstub()
 
     def test_execute_WHEN_called_THEN_calls_interaction_repository_get_last_interactions_with_given_arguments(self) -> None:
-        user_id = UserID(self.input_dto.user_id)
         when(self.interaction_repository).fetch_last_interactions(
-            user_id=user_id,
+            user_account=self.user_account,
             amount=self.input_dto.amount
         ).thenReturn([])
 
         self.retrieve_last_interactions_service.execute(self.input_dto)
 
         verify(self.interaction_repository).fetch_last_interactions(
-            user_id=user_id,
+            user_account=self.user_account,
             amount=self.input_dto.amount
         )
 
