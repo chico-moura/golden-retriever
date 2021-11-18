@@ -1,0 +1,1 @@
+infrastructure/django_api/manage.py
