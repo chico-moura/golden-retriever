@@ -29,4 +29,3 @@ class TestInstagramView(APITestCase):
 
         payload = response.json()
         self.assertEqual(expected_amount, len(payload))
-
