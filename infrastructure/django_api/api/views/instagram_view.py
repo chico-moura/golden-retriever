@@ -37,8 +37,5 @@ class InstagramView(APIView):
     @staticmethod
     def __get_amount_from_request(request: Request) -> int:
         default_amount = 10
-        amount = request.query_params.get('amount')
-        if amount:
-            return int(amount)
-        return default_amount
-
+        amount = request.query_params.get('amount', default_amount)
+        return int(amount)
